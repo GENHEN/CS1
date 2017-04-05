@@ -4,6 +4,7 @@ Author: genhen
 Date Created: 04/01/2014
 Description: Creates a Polynomial class and makes a few objects and
              prints them out after using class mutators on them
+Run: g++ -std=c++14 -o hw1.exe hw1.cpp && ./hw1.exe && rm hw1.exe
 */
 
 #include <iostream>
@@ -134,9 +135,7 @@ Polynomial::Polynomial()
 Polynomial::Polynomial(const vector<int>& coeffs)
 {
     for(int counter = 0, number_of_terms = coeffs.size(); counter < number_of_terms; counter++)
-    {
         coefficient.push_back(coeffs[counter]);
-    }
 }
 
 // ACCESSORS
@@ -148,14 +147,13 @@ Polynomial::Polynomial(const vector<int>& coeffs)
 */
 int Polynomial::Degree() const
 {
-    int degree_of_polynomial = 0, size_of_vector = coefficient.size();
+    int degree_of_polynomial = 0,
+        size_of_vector = coefficient.size();
+
     for(int counter = 0; counter < size_of_vector; counter++)
-    {
         if(coefficient[counter] != 0)
-        {
             degree_of_polynomial = counter;
-        }
-    }
+
     return degree_of_polynomial;
 }
 /**
@@ -177,72 +175,51 @@ int Polynomial::Coefficient(int k) const
 */
 void Polynomial::print() const
 {
-    int number_of_terms = coefficient.size();
-	int first_term = 0;
+    int number_of_terms = coefficient.size(),
+        first_term = 0;
 	
 	for(int counter_2 = 0; (first_term == 0) && (counter_2 < (number_of_terms + 1)); counter_2++)
-	{
 		if(coefficient[counter_2] != 0)
-		{
 			first_term = (counter_2 + 1);
-		}
-	}
+
     for(int counter = 0; counter < number_of_terms; counter++)
     {
         if(coefficient[counter] != 0)
         {
             if(counter == 0)
-            {
                 cout << coefficient[counter];
-            }
             else if(counter == 1)
             {
                 if((first_term - 1) != counter)
-                {
                     cout << '+';
-                }
                 
 				if(coefficient[counter] == 1)
-                {
                     cout << 'x';
-                }
                 else if(coefficient[counter] == -1)
-                {
                     cout << '-' << 'x';
-                }
                 else
-                {
                     cout << coefficient[counter] << 'x';
-                }
             }
             else
             {
                 if((first_term - 1) != counter)
-                {
                     cout << '+';
-                }
                 
 				if(coefficient[counter] == 1)
-                {
                     cout << 'x' << '^' << counter;
-                }
                 else if(coefficient[counter] == -1)
-                {
                     cout << '-' << 'x' << '^' << counter;
-                }
                 else
-                {
                     cout << coefficient[counter] << "x^" << counter;
-                }
             }
         }
         else if(coefficient[counter] == 0 && (counter == 0) && (Is_The_Polynomial_All_Zeroes() == true))
-        {
             cout << coefficient[counter];
-        }
     }
-	return ;
+
+	return;
 }
+
 /**
 	This function quickly loops through the private integer vector 'coefficient' in order to figure
 	out if all of the coefficients are zero and stops/returns 0 if even one coefficient is 0
@@ -253,17 +230,15 @@ bool Polynomial::Is_The_Polynomial_All_Zeroes() const
 {
     int number_of_terms = coefficient.size();
     bool polynomial_all_zeroes = true;
+
     for(int counter = 0; ((polynomial_all_zeroes == true) && (counter < number_of_terms)); counter++)
     {
         if(coefficient[counter] == 0)
-        {
             polynomial_all_zeroes = true;
-        }
         else
-        {
             polynomial_all_zeroes = false;
-        }
     }
+
     return polynomial_all_zeroes;
 }
 
@@ -278,9 +253,8 @@ void Polynomial::constantMultiply(int x)
 {
     int number_of_terms = coefficient.size();
     for(int counter = 0; counter < number_of_terms; counter++)
-    {
         coefficient[counter] = coefficient[counter] * x;
-    }
+
 	return;
 }
 /**
@@ -293,12 +267,13 @@ void Polynomial::constantMultiply(int x)
 void Polynomial::Transform()
 {
     int number_of_terms = coefficient.size();
+    
     for(int counter = 0; counter < (number_of_terms - 1); counter++)
-    {
         coefficient[counter] = coefficient[counter + 1] * (counter + 1);
-    }
+
     coefficient[number_of_terms - 1] = 0;
-	return;
+	
+    return;
 }
 
 
@@ -313,40 +288,31 @@ void Polynomial::Transform()
 */
 Polynomial Add(const Polynomial& poly1, const Polynomial& poly2)
 {
-    int largest_polynomial = 0;
-    int size_of_poly1 = (poly1.Degree() + 1);
-    int size_of_poly2 = (poly2.Degree() + 1);
+    int largest_polynomial = 0,
+        size_of_poly1 = (poly1.Degree() + 1),
+        size_of_poly2 = (poly2.Degree() + 1);
 
     if(size_of_poly1 > size_of_poly2)
-    {
         largest_polynomial = size_of_poly1;
-    }
     else
-    {
         largest_polynomial = size_of_poly2;
-    }
 
-    vector<int> polynomial_size_allocator(largest_polynomial,0);
+    vector<int> polynomial_size_allocator(largest_polynomial, 0);
 
     for(int counter = 0; counter < largest_polynomial; counter++)
     {
         if((size_of_poly1 < size_of_poly2) && ((counter + 1) > size_of_poly1))
-        {
             polynomial_size_allocator[counter] = poly2.Coefficient(counter);
-        }
         else if((size_of_poly2 < size_of_poly1) && ((counter + 1) > size_of_poly2))
-        {
             polynomial_size_allocator[counter] = poly1.Coefficient(counter);
-        }
         else
-        {
             polynomial_size_allocator[counter] = poly1.Coefficient(counter) + poly2.Coefficient(counter);
-        }
     }
 
     Polynomial resulting_added_polynomial(polynomial_size_allocator);
     return resulting_added_polynomial;
 }
+
 /**
 	This function uses the add function by adding a negative version of the second polynomial
 	and returning the "sum"
@@ -363,6 +329,7 @@ Polynomial Subtract(const Polynomial& poly1, const Polynomial& poly2)
     Polynomial resulting_subtracted_polynomial = Add(poly1,poly2_replacement);
     return resulting_subtracted_polynomial;
 }
+
 /**
 	This function goes through each coefficient of the first polynomial and multiplies each
 	coefficient throughout the whole second polynomial using a nested for loop
@@ -374,17 +341,13 @@ Polynomial Subtract(const Polynomial& poly1, const Polynomial& poly2)
 */
 Polynomial Multiply(const Polynomial& poly1, const Polynomial& poly2)
 {
-    int size_of_poly1 = (poly1.Degree() + 1);
-    int size_of_poly2 = (poly2.Degree() + 1);
-    vector<int> resulting_polynomial_integers((size_of_poly1 + size_of_poly2),0);
+    int size_of_poly1 = (poly1.Degree() + 1),
+        size_of_poly2 = (poly2.Degree() + 1);
+    vector<int> resulting_polynomial_integers((size_of_poly1 + size_of_poly2), 0);
 
     for(int counter = 0; counter < size_of_poly2; counter++)
-    {
         for(int counter_2 = 0; counter_2 < size_of_poly1; counter_2++)
-        {
             resulting_polynomial_integers[counter + counter_2] = resulting_polynomial_integers[counter + counter_2] + (poly1.Coefficient(counter_2) * poly2.Coefficient(counter));
-        }
-    }
 
     Polynomial resulting_multiplied_polynomial(resulting_polynomial_integers);
 
