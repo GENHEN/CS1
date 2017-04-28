@@ -1,2 +1,2 @@
-# Programming in School and Learning
+# First CS class
 Learning The Basics of Languages
