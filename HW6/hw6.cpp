@@ -46,11 +46,11 @@ class Point2D
 		Point2D(double x, double y);
 
 		// Accessors
-		const double getx();
-		const double gety();
-		const double get_distance_from_origin();
-		const double get_angle_from_origin();
-		void print();
+		double getx() const;
+		double gety() const;
+		double get_distance_from_origin() const;
+		double get_angle_from_origin() const;
+		void print() const;
 
 	private:
 		double x_cord,
@@ -59,7 +59,7 @@ class Point2D
 		       distance_from_origin;
 };
 
-bool operator<(Point2D &pt1, Point2D &pt2);
+bool operator<(const Point2D &pt1, const Point2D &pt2);
 
 int main()
 {
@@ -73,7 +73,7 @@ int main()
 	cout << "Welcome to Point Printer! Please insert the x-and y-coordinates for your"     << endl
 	     << "points and I will print them in sorted order! Just one rule, the point (0,0)" << endl
 	     << "is reserved as the terminating point, so when you are done enter (0,0)."      << endl;
-	
+
 	while(true)
 	{
 		cout << "x = ";
@@ -133,7 +133,7 @@ Point2D::Point2D(double x, double y) : x_cord(x), y_cord(y),
 
 	@return private member variable x_coord
 */
-const double Point2D::getx()
+double Point2D::getx() const
 {
 	return x_cord;
 }
@@ -143,7 +143,7 @@ const double Point2D::getx()
 
 	@return private member variable x_coord
 */
-const double Point2D::gety()
+double Point2D::gety() const
 {
 	return y_cord;
 }
@@ -151,7 +151,7 @@ const double Point2D::gety()
 /**
 	Prints x and y coordinates in (x,y) form
 */
-void Point2D::print()
+void Point2D::print() const
 {
 	cout << '(' << x_cord << ',' << y_cord << ')';
 	return;
@@ -161,7 +161,7 @@ void Point2D::print()
 	@return Returns the distance from the origin that was already stored in the
 	        private variable 'distance_from_origin'
 */
-const double Point2D::get_distance_from_origin()
+double Point2D::get_distance_from_origin() const
 {
 	return distance_from_origin;
 }
@@ -169,7 +169,7 @@ const double Point2D::get_distance_from_origin()
 /**
 	@return the angle between 0-2π radians
 */
-const double Point2D::get_angle_from_origin()
+double Point2D::get_angle_from_origin() const
 {
 	return angle_from_origin;
 }
@@ -182,7 +182,7 @@ const double Point2D::get_angle_from_origin()
 	using distance_from_origin first, and if same distance_from_origin,
 	then compares angle_from_origin
 */
-bool operator<(Point2D &pt1, Point2D &pt2)
+bool operator<(const Point2D &pt1, const Point2D &pt2)
 {
 	if(pt1.get_distance_from_origin() < pt2.get_distance_from_origin())
 		return true;
