@@ -2,10 +2,10 @@
 File Name: hw3.cpp
 Author: genhen
 Date Created: 04/08/2014
-Run: g++ -std=c++14 -o hw3.exe hw3.cpp && ./hw3.exe && rm hw3.exe
 Description: Uses three classes that are inherited from one another Point2D,
-             WeightedPoint2D, and ColorPoint2D. Uses polymorphisms to
-             display the points.
+			 WeightedPoint2D, and ColorPoint2D. Uses polymorphisms to
+			 display the points.
+Run: g++ -std=c++14 -o hw3.exe hw3.cpp && ./hw3.exe && rm hw3.exe
 */
 
 #include <iostream>
@@ -16,151 +16,151 @@ Description: Uses three classes that are inherited from one another Point2D,
 using namespace std;
 
 /** @class Point2D
-    @brief Class for (x,y) points
+	@brief Class for (x,y) points
 
-    This class is designed to store and modify points in the plane.  You can print
-    out the coordinates or move the points or transform them however you like.  The
-    coordinates are stored as two private variables x and y representing the x- and y-
-    coordinates in a point (x,y).
+	This class is designed to store and modify points in the plane.  You can print
+	out the coordinates or move the points or transform them however you like.  The
+	coordinates are stored as two private variables x and y representing the x- and y-
+	coordinates in a point (x,y).
 */
 class Point2D
 {
-    public:
-        // Constructors
-        Point2D();
-        Point2D(double x, double y);
+	public:
+		// Constructors
+		Point2D();
+		Point2D(double x, double y);
 
-        // Accessors
-        double getx();
-        double gety();
-        void print();
-        string print_string();
+		// Accessors
+		double getx();
+		double gety();
+		void print();
+		string print_string();
 
-        // Mutators
-        void setx(double x_new);
-        void sety(double y_new);
+		// Mutators
+		void setx(double x_new);
+		void sety(double y_new);
 
-    private:
-        double x_cord, y_cord;
+	private:
+		double x_cord, y_cord;
 };
 
 /** @class ColorPoint2D
-    @brief Class for (x,y) points with a color string
+	@brief Class for (x,y) points with a color string
 
-    This class is designed to store and modify points in the plane. It inherits from
-    and has the properties of the Point2D class. However, it has a string clss that
-    stores the color of the point as well that is to be displayed in the print function
+	This class is designed to store and modify points in the plane. It inherits from
+	and has the properties of the Point2D class. However, it has a string clss that
+	stores the color of the point as well that is to be displayed in the print function
 */
 class ColorPoint2D : public Point2D
 {
-    public:
-        // Constructors
-        ColorPoint2D();
-        ColorPoint2D(double x, double y, string col);
+	public:
+		// Constructors
+		ColorPoint2D();
+		ColorPoint2D(double x, double y, string col);
 
-        // Accessors
-        string getcolor();
-        void print();
-        string print_string();
+		// Accessors
+		string getcolor();
+		void print();
+		string print_string();
 
-        // Mutators
-        void setcolor(string col);
+		// Mutators
+		void setcolor(string col);
 
-    private:
-        string color;
+	private:
+		string color;
 };
 
 /** @class WeightedPoint2D
-    @brief Class for (x,y) points with a color string and a weight value
+	@brief Class for (x,y) points with a color string and a weight value
 
-    This class is designed to store and modify points in the plane. It inherits from
-    and has the properties of the ColorPoint2D function, except it has a weight
-    value as well
+	This class is designed to store and modify points in the plane. It inherits from
+	and has the properties of the ColorPoint2D function, except it has a weight
+	value as well
 */
 class WeightedPoint2D : public Point2D
 {
-    public:
-        //Constructors
-        WeightedPoint2D();
-        WeightedPoint2D(double x, double y, double weight_input);
+	public:
+		//Constructors
+		WeightedPoint2D();
+		WeightedPoint2D(double x, double y, double weight_input);
 
-        // Accessors
-        double getweight();
-        void print();
-        string print_string();
+		// Accessors
+		double getweight();
+		void print();
+		string print_string();
 
-    private:
-        double weight;
+	private:
+		double weight;
 };
 
 
 int main()
 {
-    int user_point_selection = 0;
-    string result = "";
+	int user_point_selection = 0;
+	string result = "";
 
-    cout << "Welcome to Point Printer! You can create three different kinds of points:" << endl
-         << endl
-         << "1. Point2D, e.g., (2,6.5)"              << endl
-         << "2. ColorPoint2D, e.g., blue(-4.5,3.5)"  << endl
-         << "3. WeightedPoint2D, e.g., .12(3.6,8.7)" << endl
-         << endl
-         << "Enter 0 when you are finished."         << endl << endl;
+	cout << "Welcome to Point Printer! You can create three different kinds of points:" << endl
+	     << endl
+	     << "1. Point2D, e.g., (2,6.5)"              << endl
+	     << "2. ColorPoint2D, e.g., blue(-4.5,3.5)"  << endl
+	     << "3. WeightedPoint2D, e.g., .12(3.6,8.7)" << endl
+	     << endl
+	     << "Enter 0 when you are finished."         << endl << endl;
 
-    
-    double x_cord, y_cord;
-    int counter = 1;
+	
+	double x_cord, y_cord;
+	int counter = 1;
 
-    do
-    {
-        cout << "Selection: ";
-        cin >> user_point_selection;
+	do
+	{
+		cout << "Selection: ";
+		cin >> user_point_selection;
 
-        if(user_point_selection == 1 || user_point_selection == 2 ||
-           user_point_selection == 3)
-        {
-            cout << "x = ";
-            cin >> x_cord;
-            cin.ignore();
+		if(user_point_selection == 1 || user_point_selection == 2 ||
+		   user_point_selection == 3)
+		{
+			cout << "x = ";
+			cin >> x_cord;
+			cin.ignore();
 
-            cout << "y = ";
-            cin >> y_cord;
-            cin.ignore();
+			cout << "y = ";
+			cin >> y_cord;
+			cin.ignore();
 
-            result += to_string(counter++) + ": ";
-        }
+			result += to_string(counter++) + ": ";
+		}
 
-        if(user_point_selection == 1)
-        {
-            Point2D point_in_2D(x_cord, y_cord);
-            result += point_in_2D.print_string() + "\n";
-        }
-        else if(user_point_selection == 2)
-        {
-            string color;
+		if(user_point_selection == 1)
+		{
+			Point2D point_in_2D(x_cord, y_cord);
+			result += point_in_2D.print_string() + "\n";
+		}
+		else if(user_point_selection == 2)
+		{
+			string color;
 
-            cout << "color = ";
-            getline(std::cin, color);
+			cout << "color = ";
+			getline(std::cin, color);
 
-            ColorPoint2D color_point(x_cord, y_cord, color);
-            result += color_point.print_string() + "\n";
-        }
-        else if(user_point_selection == 3)
-        {
-            double weight = 0.0;
+			ColorPoint2D color_point(x_cord, y_cord, color);
+			result += color_point.print_string() + "\n";
+		}
+		else if(user_point_selection == 3)
+		{
+			double weight = 0.0;
 
-            cout << "weight = ";
-            cin >> weight;
-            cin.ignore();
+			cout << "weight = ";
+			cin >> weight;
+			cin.ignore();
 
-            WeightedPoint2D weighted_point(x_cord, y_cord, weight);
-            result += weighted_point.print_string() + "\n";
-        }
-    } while(user_point_selection != 0);
+			WeightedPoint2D weighted_point(x_cord, y_cord, weight);
+			result += weighted_point.print_string() + "\n";
+		}
+	} while(user_point_selection != 0);
 
-    cout << endl << "Your points are" << endl
-         << endl
-         << result << endl;
+	cout << endl << "Your points are" << endl
+	     << endl
+	     << result << endl;
 
 	return 0;
 }
@@ -193,17 +193,17 @@ Point2D::Point2D(double x, double y) : x_cord(x), y_cord(y)
 */
 double Point2D::getx()
 {
-    return x_cord;
+	return x_cord;
 }
 
 /**
-    Returns y coordinate
+	Returns y coordinate
 
-    @return private member variable x_coord
+	@return private member variable x_coord
 */
 double Point2D::gety()
 {
-    return y_cord;
+	return y_cord;
 }
 
 /**
@@ -216,24 +216,24 @@ void Point2D::print()
 }
 
 /**
-    @return the printed form of Point2D object
+	@return the printed form of Point2D object
 */
 string Point2D::print_string()
 {
-    string x_string = to_string(x_cord),
-           y_string = to_string(y_cord);
+	string x_string = to_string(x_cord),
+		   y_string = to_string(y_cord);
 
-    while(x_string.back() == '0')
-        x_string.pop_back();
-    while(y_string.back() == '0')
-        y_string.pop_back();
+	while(x_string.back() == '0')
+		x_string.pop_back();
+	while(y_string.back() == '0')
+		y_string.pop_back();
 
-    if(x_string.back() == '.')
-        x_string.pop_back();
-    if(y_string.back() == '.')
-        y_string.pop_back();
+	if(x_string.back() == '.')
+		x_string.pop_back();
+	if(y_string.back() == '.')
+		y_string.pop_back();
 
-    return ("(" + x_string + ", " + y_string + ")");
+	return ("(" + x_string + ", " + y_string + ")");
 }
 
 //
@@ -246,19 +246,19 @@ string Point2D::print_string()
 */
 void Point2D::setx(double x_new)
 {
-    x_cord = x_new;
-    return;
+	x_cord = x_new;
+	return;
 }
 
 /**
-    Sets y floating point value to a new value
+	Sets y floating point value to a new value
 
-    @param y_new is the newer value to assign
+	@param y_new is the newer value to assign
 */
 void Point2D::sety(double y_new)
 {
-    y_cord = y_new;
-    return;
+	y_cord = y_new;
+	return;
 }
 
 //
@@ -271,7 +271,7 @@ ColorPoint2D::ColorPoint2D() : color("")
 { }
 
 /**
-    Contructs ColorPoint2D based off of given x,y coords and color
+	Contructs ColorPoint2D based off of given x,y coords and color
 
 	@param a the x-coordinate
 	@param b the y-coordinate
@@ -288,7 +288,7 @@ ColorPoint2D::ColorPoint2D(double x, double y, string col) : Point2D(x,y), color
 */
 string ColorPoint2D::getcolor()
 {
-    return color;
+	return color;
 }
 
 /**
@@ -302,11 +302,11 @@ void ColorPoint2D::print()
 }
 
 /**
-    @return the printed form of ColorPoint2D object
+	@return the printed form of ColorPoint2D object
 */
 string ColorPoint2D::print_string()
 {
-    return (color + Point2D::print_string());
+	return (color + Point2D::print_string());
 }
 
 //
@@ -319,8 +319,8 @@ string ColorPoint2D::print_string()
 */
 void ColorPoint2D::setcolor(string col)
 {
-    color = col;
-    return;
+	color = col;
+	return;
 }
 
 //
@@ -331,7 +331,7 @@ void ColorPoint2D::setcolor(string col)
 */
 WeightedPoint2D::WeightedPoint2D()
 {
-    weight = 0.0;
+	weight = 0.0;
 }
 
 /**
@@ -348,7 +348,7 @@ WeightedPoint2D::WeightedPoint2D(double x, double y, double weight_input) : Poin
 */
 double WeightedPoint2D::getweight()
 {
-    return weight;
+	return weight;
 }
 
 /**
@@ -356,22 +356,22 @@ double WeightedPoint2D::getweight()
 */
 void WeightedPoint2D::print()
 {
-    cout << weight;
-    Point2D::print();
+	cout << weight;
+	Point2D::print();
 }
 
 /**
-    @return the printed form of WeightedPoint2D object
+	@return the printed form of WeightedPoint2D object
 */
 string WeightedPoint2D::print_string()
 {
-    string weight_string = to_string(weight);
+	string weight_string = to_string(weight);
 
-    while(weight_string.back() == '0')
-        weight_string.pop_back();
+	while(weight_string.back() == '0')
+		weight_string.pop_back();
 
-    if(weight_string.back() == '.')
-        weight_string.pop_back();
+	if(weight_string.back() == '.')
+		weight_string.pop_back();
 
-    return (weight_string + Point2D::print_string());
+	return (weight_string + Point2D::print_string());
 }
