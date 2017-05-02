@@ -3,7 +3,7 @@ File Name: hw1.cpp
 Author: genhen
 Date Created: 04/01/2014
 Description: Creates a Polynomial class and makes a few objects and
-			 prints them out after using class mutators on them
+             prints them out after using class mutators on them
 Run: g++ -std=c++14 -o hw1.exe hw1.cpp && ./hw1.exe && rm hw1.exe
 */
 
@@ -51,7 +51,7 @@ int main()
 	int counter = 0, counter_2 = 0;
 
 	cout << "Welcome! Please input the coefficients of the first polynomial." << endl
-		 << "When you are finished, enter -1234." << endl;
+	     << "When you are finished, enter -1234." << endl;
 	do
 	{
 		cin >> user_input_1;
@@ -289,8 +289,8 @@ void Polynomial::Transform()
 Polynomial Add(const Polynomial& poly1, const Polynomial& poly2)
 {
 	int largest_polynomial = 0,
-		size_of_poly1 = (poly1.Degree() + 1),
-		size_of_poly2 = (poly2.Degree() + 1);
+	    size_of_poly1 = (poly1.Degree() + 1),
+	    size_of_poly2 = (poly2.Degree() + 1);
 
 	if(size_of_poly1 > size_of_poly2)
 		largest_polynomial = size_of_poly1;
