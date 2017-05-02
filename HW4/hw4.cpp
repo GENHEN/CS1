@@ -73,8 +73,8 @@ class Rational
         Rational(const Polynomial &p);
         Rational(const Polynomial &px, const Polynomial &qx);
 		
-		// Mutators
-		void polynomial_Change(int qx_px, const Polynomial &poly_in);
+	// Mutators
+	void polynomial_Change(int qx_px, const Polynomial &poly_in);
         
         // Other
         double evaluateAt(double x);
@@ -97,7 +97,7 @@ class Rational
         friend istream& operator>>(istream &instream, Rational &rational1);
     private:
         Polynomial px_top,
-                   qx_bottom;
+	           qx_bottom;
 };
 
 //
@@ -118,7 +118,7 @@ Polynomial::Polynomial()
 */
 Polynomial::Polynomial(const vector<int> &coeffs)
 {
-    for(int counter = 0, number_of_terms = coeffs.size(); counter < number_of_terms; ++counter)
+	for(int counter = 0, number_of_terms = coeffs.size(); counter < number_of_terms; ++counter)
 		coefficient.push_back(coeffs[counter]);
 }
 
@@ -133,15 +133,15 @@ Polynomial::Polynomial(const vector<int> &coeffs)
 */
 int Polynomial::Degree() const
 {
-    int degree_of_polynomial = 0, size_of_vector = coefficient.size();
-    for(int counter = 0; counter < size_of_vector; counter++)
-    {
-        if(coefficient[counter] != 0)
-        {
-            degree_of_polynomial = counter;
-        }
-    }
-    return degree_of_polynomial;
+	int degree_of_polynomial = 0,
+	    size_of_vector = coefficient.size();
+	for(int counter = 0; counter < size_of_vector; counter++)
+	{
+		if(coefficient[counter] != 0)
+			degree_of_polynomial = counter;
+	}
+	
+	return degree_of_polynomial;
 }
 
 /**
@@ -162,44 +162,45 @@ int Polynomial::Coefficient(int k) const
 */
 void Polynomial::print() const
 {
-    int number_of_terms = coefficient.size(),
+	int number_of_terms = coefficient.size(),
 	    first_term = 0;
 
 	for(int i = 0; (first_term == 0) && (i < (number_of_terms + 1)); i++)
 		if(coefficient[i] != 0)
 			first_term = (i + 1);
 
-    for(int counter = 0; counter < number_of_terms; counter++)
-    {
-        if(coefficient[counter] != 0)
-        {
-            if(counter == 0)
-                cout << coefficient[counter];
-            else if(counter == 1)
-            {
-                if((first_term - 1) != counter)
-                    cout << '+';
+	for(int counter = 0; counter < number_of_terms; counter++)
+	{
+		if(coefficient[counter] != 0)
+		{
+			if(counter == 0)
+				cout << coefficient[counter];
+			else if(counter == 1)
+			{
+				if((first_term - 1) != counter)
+					cout << '+';
 
 				if(coefficient[counter] == 1)
-                    cout << 'x';
-                else if(coefficient[counter] == -1)
-                    cout << '-' << 'x';
-                else
-                    cout << coefficient[counter] << 'x';
-            }
-            else
-            {
-                if((first_term - 1) != counter)
-                    cout << '+';
+					cout << 'x';
+			}
+			else if(coefficient[counter] == -1)
+				cout << '-' << 'x';
+			else
+				cout << coefficient[counter] << 'x';
+		}
+		else
+		{
+			if((first_term - 1) != counter)
+				cout << '+';
 
-				if(coefficient[counter] == 1)
-                    cout << 'x' << '^' << counter;
-                else if(coefficient[counter] == -1)
-                    cout << '-' << 'x' << '^' << counter;
-                else
-                    cout << coefficient[counter] << "x^" << counter;
-            }
-        }
+			if(coefficient[counter] == 1)
+				cout << 'x' << '^' << counter;
+			else if(coefficient[counter] == -1)
+				cout << '-' << 'x' << '^' << counter;
+			else
+				cout << coefficient[counter] << "x^" << counter;
+		}
+	}
         else if(coefficient[counter] == 0 && (counter == 0) && (Is_The_Polynomial_All_Zeroes() == true))
             cout << coefficient[counter];
     }
