@@ -26,19 +26,19 @@ int integer_partition(int k, int n);
 
 int main()
 {
-    int m_entered,
-        m_entered_plus;
+	int m_entered,
+	    m_entered_plus;
 
-    cout << "Welcome! Please input a number m: ";
-    cin >> m_entered;
-    m_entered_plus = m_entered+1;
+	cout << "Welcome! Please input a number m: ";
+	cin >> m_entered;
+	m_entered_plus = m_entered+1;
 
 
 	for(int i = 1; i < m_entered_plus; ++i)
-        cout << endl << "p(" << i << ',' << m_entered << ") = " << integer_partition(i, m_entered);
+		cout << endl << "p(" << i << ',' << m_entered << ") = " << integer_partition(i, m_entered);
 
 	ofstream output;
-    output.open("pknTable.txt");
+	output.open("pknTable.txt");
 	cout << endl << endl << "Creating file ... ";
 
 	for(int i = 1; i < m_entered_plus; ++i)
@@ -46,14 +46,14 @@ int main()
 		for(int j = 1; j < m_entered_plus; ++j)
 			output << integer_partition(i, j) << ' ';
 
-        if(i != m_entered)
-            output << endl;
+		if(i != m_entered)
+			output << endl;
 	}
 
 	output.close();
 	cout << "Done.";
 
-    return 0;
+	return 0;
 }
 
 int integer_partition(int k, int n)
@@ -61,11 +61,11 @@ int integer_partition(int k, int n)
 	if(k >= 1 && k <= n)
 		return (integer_partition(k, (n - k)) + integer_partition((k - 1), n));
 	else if(k > n)
-        return integer_partition(n,n);
-    else if(k < 0 || n < 0)
-        return 0;
-    else if(k == 0 && n > 0)
-        return 0;
-    else if(k >= 0 && n == 0)
-        return 1;
+		return integer_partition(n,n);
+	else if(k < 0 || n < 0)
+		return 0;
+	else if(k == 0 && n > 0)
+		return 0;
+	else if(k >= 0 && n == 0)
+		return 1;
 }
