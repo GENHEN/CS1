@@ -3,8 +3,8 @@ File Name: hw3.cpp
 Author: genhen
 Date Created: 04/08/2014
 Description: Uses three classes that are inherited from one another Point2D,
-			 WeightedPoint2D, and ColorPoint2D. Uses polymorphisms to
-			 display the points.
+             WeightedPoint2D, and ColorPoint2D. Uses polymorphisms to
+             display the points.
 Run: g++ -std=c++14 -o hw3.exe hw3.cpp && ./hw3.exe && rm hw3.exe
 */
 
@@ -44,7 +44,8 @@ class Point2D
 		double x_cord, y_cord;
 };
 
-/** @class ColorPoint2D
+/**
+	@class ColorPoint2D
 	@brief Class for (x,y) points with a color string
 
 	This class is designed to store and modify points in the plane. It inherits from
@@ -70,7 +71,8 @@ class ColorPoint2D : public Point2D
 		string color;
 };
 
-/** @class WeightedPoint2D
+/**
+	@class WeightedPoint2D
 	@brief Class for (x,y) points with a color string and a weight value
 
 	This class is designed to store and modify points in the plane. It inherits from
@@ -221,7 +223,7 @@ void Point2D::print()
 string Point2D::print_string()
 {
 	string x_string = to_string(x_cord),
-		   y_string = to_string(y_cord);
+	       y_string = to_string(y_cord);
 
 	while(x_string.back() == '0')
 		x_string.pop_back();
