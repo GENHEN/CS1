@@ -48,7 +48,7 @@ class BinaryInteger
 		// Constructors
 		BinaryInteger();
 		BinaryInteger(const vector<bool> &input_bools, const bool sign);
-		BinaryInteger(int integer_to_construct);
+		BinaryInteger(int integer_to_construct); 
 
 		// Accessors
 		vector<bool> get_powers_of_two() const;
