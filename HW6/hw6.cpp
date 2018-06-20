@@ -1,7 +1,6 @@
 /*
 File Name: hw6.cpp
 Author: genhen
-Date Created: 05/06/2014
 Description: Takes a bunch of points and stores them as Point2D class objects
              and then reorders them by their respective distance to the origin
              then by how much of an angle they have to the x-axis.
