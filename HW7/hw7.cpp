@@ -1,7 +1,6 @@
 /*
 File Name: hw7.cpp
 Author: genhen
-Date Created: 05/12/2014
 Description: Create a BinaryInteger class that mimics the way integers are stored in a computer,
              but which represents negative numbers in the `sign and magnitude' form (i.e., the
              binary representation for -19 would be the same as 19 but with the signed bit `1').
