@@ -1,7 +1,6 @@
 /*
 File Name: hw1.cpp
 Author: genhen
-Date Created: 04/01/2014
 Description: Creates a Polynomial class and makes a few objects and
              prints them out after using class mutators on them
 Run: g++ -std=c++14 -o hw1.exe hw1.cpp && ./hw1.exe && rm hw1.exe
