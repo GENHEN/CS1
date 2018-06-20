@@ -1,7 +1,6 @@
 /*
 File Name: hw5.cpp
 Author: genhen
-Date Created: 04/28/2014
 Description: Create a function that computes the number
              of integer partitions of n with each element
              at most k. The program should allow the user
