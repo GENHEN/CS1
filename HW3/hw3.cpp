@@ -1,7 +1,6 @@
 /*
 File Name: hw3.cpp
 Author: genhen
-Date Created: 04/08/2014
 Description: Uses three classes that are inherited from one another Point2D,
              WeightedPoint2D, and ColorPoint2D. Uses polymorphisms to
              display the points.
